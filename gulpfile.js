@@ -22,16 +22,7 @@ gulp.task('browser-sync', function() {
         port: 8080,
         open: false,
         notify: false,
-        // proxy: 'yourlocal.dev',
-        // host: '192.168.1.1',
-        // injectChanges: true,
-        // browser: ['google chrome', 'firefox'],
-        ghostMode: {
-            clicks: false,
-            location: false,
-            forms: false,
-            scroll: false
-        }
+        ghostMode: false
     });
 });
 
@@ -44,13 +35,13 @@ gulp.task('jade', function() {
         .pipe(gulp.dest('./'));
 });
 
+//compile all jade files
 gulp.task('jade-all', function() {
     return gulp.src('jade/*.jade')
         .pipe(plumber({errorHandler: notify.onError(function(error){return error.message;})}))
         .pipe(jade({pretty: true}))
         .pipe(gulp.dest('./'));
 });
-
 
 //compass
 gulp.task('compass', function() {
